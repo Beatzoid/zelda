@@ -12,12 +12,14 @@ jobs:
             fail-fast: false
             matrix:
                 os:
-                    - windows-latest
                     - macos-latest
-                    - ubuntu-latest
                 unity-version:
                     - 2021.2.0a17
                     - 2020.3.8f1
+                unity-module:
+                    - windows-mono
+                    - linux-il2cpp
+                    - mac-mono
         steps:
             - name: Checkout code
               uses: actions/checkout@v2

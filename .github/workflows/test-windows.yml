@@ -1,0 +1,44 @@
+name: Tests
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+jobs:
+    test:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os:
+                    - windows-latest
+                unity-version:
+                    - 2021.2.0a17
+                    - 2020.3.8f1
+                unity-module:
+                    - windows-il2cpp
+                    - linux-mono
+                    - mac-mono
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup Unity
+              uses: kuler90/setup-unity@v1
+              timeout-minutes: 60
+              with:
+                  unity-version: ${{ matrix.unity-version }}
+                  unity-modules: ${{ matrix.unity-module }}
+
+            - name: Activate Unity
+              uses: kuler90/activate-unity@v1
+              with:
+                  unity-username: ${{ secrets.UNITY_USERNAME }}
+                  unity-password: ${{ secrets.UNITY_PASSWORD }}
+                  unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
+
+            - name: Build Unity
+              uses: kuler90/build-unity@v1
+              with:
+                  build-target: StandaloneWindows64
