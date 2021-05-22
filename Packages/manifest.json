@@ -46,6 +46,19 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  }
+    "com.unity.modules.xr": "1.0.0",
+    "com.github.superunitybuild.buildtool": "2.0.0",
+    "com.github.superunitybuild.buildactions": "2.0.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.github.superunitybuild.buildactions",
+        "com.github.superunitybuild.buildtool",
+        "com.openupm"
+      ]
+    }
+  ]
 }
