@@ -1,44 +1,46 @@
-name: Test MacOS
-on:
-    push:
-        branches: [master]
-    pull_request:
-        branches: [master]
+# BROKEN UNTIL https://github.com/kuler90/activate-unity/issues/3 GETS FIXED
 
-jobs:
-    test-macos:
-        runs-on: ${{ matrix.os }}
-        strategy:
-            fail-fast: false
-            matrix:
-                os:
-                    - macos-latest
-                unity-version:
-                    - 2021.2.0a17
-                    - 2020.3.8f1
-                unity-module:
-                    - windows-mono
-                    - linux-mono
-                    - mac-il2cpp
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
+# name: Test MacOS
+# on:
+#     push:
+#         branches: [master]
+#     pull_request:
+#         branches: [master]
 
-            - name: Setup Unity
-              uses: kuler90/setup-unity@v1
-              timeout-minutes: 60
-              with:
-                  unity-version: ${{ matrix.unity-version }}
-                  unity-modules: ${{ matrix.unity-module }}
+# jobs:
+#     test-macos:
+#         runs-on: ${{ matrix.os }}
+#         strategy:
+#             fail-fast: false
+#             matrix:
+#                 os:
+#                     - macos-latest
+#                 unity-version:
+#                     - 2021.2.0a17
+#                     - 2020.3.8f1
+#                 unity-module:
+#                     - windows-mono
+#                     - linux-mono
+#                     - mac-il2cpp
+#         steps:
+#             - name: Checkout code
+#               uses: actions/checkout@v2
 
-            - name: Activate Unity
-              uses: kuler90/activate-unity@v1
-              with:
-                  unity-username: ${{ secrets.UNITY_USERNAME }}
-                  unity-password: ${{ secrets.UNITY_PASSWORD }}
-                  unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
+#             - name: Setup Unity
+#               uses: kuler90/setup-unity@v1
+#               timeout-minutes: 60
+#               with:
+#                   unity-version: ${{ matrix.unity-version }}
+#                   unity-modules: ${{ matrix.unity-module }}
 
-            - name: Build Unity
-              uses: kuler90/build-unity@v1
-              with:
-                  build-target: StandaloneWindows64
+#             - name: Activate Unity
+#               uses: kuler90/activate-unity@v1
+#               with:
+#                   unity-username: ${{ secrets.UNITY_USERNAME }}
+#                   unity-password: ${{ secrets.UNITY_PASSWORD }}
+#                   unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
+
+#             - name: Build Unity
+#               uses: kuler90/build-unity@v1
+#               with:
+#                   build-target: StandaloneWindows64
