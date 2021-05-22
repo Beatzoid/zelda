@@ -14,19 +14,20 @@ public class Knockback : MonoBehaviour
             if (enemy != null)
             {
                 StartCoroutine(KnockCoroutine(enemy));
-
             }
         }
     }
 
     private IEnumerator KnockCoroutine(Rigidbody2D enemy)
     {
+        enemy.GetComponent<Enemy>().currentState = EnemyState.stagger;
         Vector2 forceDirection = enemy.transform.position - transform.position;
         Vector2 force = forceDirection.normalized * thrust;
 
         enemy.velocity = force;
         yield return new WaitForSeconds(.3f);
         enemy.velocity = Vector2.zero;
+        enemy.GetComponent<Enemy>().currentState = EnemyState.idle;
 
     }
 }

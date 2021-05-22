@@ -17,9 +17,10 @@ public class Log : Enemy
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
+        currentState = EnemyState.idle;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CheckDistance();
     }
@@ -27,9 +28,22 @@ public class Log : Enemy
     void CheckDistance()
     {
         if (Vector3.Distance(target.position, transform.position) <= chaseRadius
-            && Vector3.Distance(target.position, transform.position) > attackRadius) 
+            && Vector3.Distance(target.position, transform.position) > attackRadius)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            if (currentState == EnemyState.idle || currentState == EnemyState.walk
+                && currentState != EnemyState.stagger)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                ChangeState(EnemyState.walk);
+            }
+        }
+    }
+
+    private void ChangeState(EnemyState newState)
+    {
+        if (currentState != newState)
+        {
+            currentState = newState;
         }
     }
 }
