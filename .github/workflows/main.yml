@@ -20,8 +20,8 @@ jobs:
                     - 2020.3.8f1
                 unity-module:
                     - linux-mono
-                    - mac-il2cpp
-                    - windows-mono
+                    - mac-mono
+                    - windows
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
