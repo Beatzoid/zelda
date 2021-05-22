@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum EnemyState
@@ -23,4 +24,20 @@ public class Enemy : MonoBehaviour
 
     [Tooltip("The move speed of the enemy")]
     public float moveSpeed;
+
+    public void Knock(Rigidbody2D rigidbody, float knockTime)
+    {
+        StartCoroutine(KnockCoroutine(rigidbody, knockTime));
+    }
+
+    private IEnumerator KnockCoroutine(Rigidbody2D rigidbody, float knockTime)
+    {
+        if (rigidbody != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            rigidbody.velocity = Vector2.zero;
+            currentState = EnemyState.idle;
+            rigidbody.velocity = Vector2.zero;
+        }
+    }
 }

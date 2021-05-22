@@ -1,33 +1,43 @@
-using System.Collections;
 using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
     [Tooltip("The force that one entity knocks another entity back by")]
     public float thrust;
+    [Tooltip("How long to knock the entity for")]
+    public float knockTime = .3f;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Breakable") && this.gameObject.CompareTag("Player"))
         {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
-            if (enemy != null)
+            other.GetComponent<Pot>().Smash();
+        }
+
+        if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        {
+            Rigidbody2D hit = other.GetComponent<Rigidbody2D>();
+            if (hit != null)
             {
-                StartCoroutine(KnockCoroutine(enemy));
+                Vector2 difference = hit.transform.position - transform.position;
+                difference = difference.normalized * thrust;
+                hit.AddForce(difference, ForceMode2D.Impulse);
+
+                if (other.CompareTag("Enemy"))
+                {
+                    hit.GetComponent<Enemy>().currentState = EnemyState.stagger;
+                    other.GetComponent<Enemy>().Knock(hit, knockTime);
+                }
+
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    if (other.GetComponent<PlayerMovement>().currentState != PlayerState.stagger)
+                    {
+                        hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
+                        other.GetComponent<PlayerMovement>().Knock(knockTime);
+                    }
+                }
             }
         }
-    }
-
-    private IEnumerator KnockCoroutine(Rigidbody2D enemy)
-    {
-        enemy.GetComponent<Enemy>().currentState = EnemyState.stagger;
-        Vector2 forceDirection = enemy.transform.position - transform.position;
-        Vector2 force = forceDirection.normalized * thrust;
-
-        enemy.velocity = force;
-        yield return new WaitForSeconds(.3f);
-        enemy.velocity = Vector2.zero;
-        enemy.GetComponent<Enemy>().currentState = EnemyState.idle;
-
     }
 }

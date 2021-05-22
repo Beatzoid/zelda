@@ -22,7 +22,7 @@ MonoBehaviour:
     binaryNameFormat: '{0}.exe'
   - target: 19
     name: Windows x64
-    enabled: 0
+    enabled: 1
     binaryNameFormat: '{0}.exe'
   variants: []
   platformName: PC
@@ -50,7 +50,7 @@ MonoBehaviour:
     binaryNameFormat: '{0}.app'
   variants:
   - variantName: macOS Architecture
-    selectedIndex: 0
+    selectedIndex: 2
     values:
     - Intelx64
     - Apple Silicon
@@ -113,7 +113,8 @@ MonoBehaviour:
       buildOptions: 0
       customDefines: 
       sceneList:
-        enabledScenes: []
+        enabledScenes:
+        - fileGUID: 2cda990e2423bbf4892e6590ba056729
   _platformList:
     platforms:
     - {fileID: -5385567052890760305}
@@ -121,27 +122,37 @@ MonoBehaviour:
     - {fileID: -7070251208298439844}
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffffffffffff06000000ffffffff030000000500000002000000
-      _HashCodes: f91bef2598ccf067a0a5484ecd93a94dfa321e146efd6b0de2ef0e11
-      _Next: ffffffff00000000ffffffff01000000ffffffff04000000ffffffff
-      _Count: 7
-      _Version: 7
+      _Buckets: ffffffffffffffff0100000007000000ffffffffffffffffffffffff06000000ffffffffffffffff04000000ffffffff05000000ffffffffffffffffffffffff02000000
+      _HashCodes: f22bf02b98ccf067a0a5484ecd93a94dfa321e14c649cf4e6efd6b0de2ef0e11000000000000000000000000000000000000000000000000000000000000000000000000
+      _Next: ffffffffffffffffffffffffffffffffffffffffffffffff0000000003000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Count: 8
+      _Version: 8
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - Test Build/macOS/macOS (Intelx64)
+      - Test Build/macOS/macOS (Universal)
       - Test Build/macOS
       - Test Build/Linux/Linux x64
       - Test Build/Linux
       - Test Build/PC/Windows x86
+      - Test Build/PC/Windows x64
       - Test Build/PC
       - Test Build
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
       _Values:
       - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Test Build/macOS/macOS (Intelx64)
+        - Test Build/macOS/macOS (Universal)
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -150,13 +161,34 @@ MonoBehaviour:
       - enabled: 1
         childKeys: []
       - enabled: 1
+        childKeys: []
+      - enabled: 1
         childKeys:
         - Test Build/PC/Windows x86
+        - Test Build/PC/Windows x64
       - enabled: 1
         childKeys:
         - Test Build/macOS
         - Test Build/Linux
         - Test Build/PC
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
     showViewOptions: 0
     showConfigs: 0
     showBuildInfo: 0
