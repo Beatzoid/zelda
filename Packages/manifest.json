@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.github.superunitybuild.buildactions": "2.0.0",
+    "com.github.superunitybuild.buildtool": "2.0.0",
     "com.unity.2d.animation": "6.0.1",
     "com.unity.2d.pixel-perfect": "5.0.0",
     "com.unity.2d.psdimporter": "5.0.1",
@@ -13,6 +15,7 @@
     "com.unity.test-framework": "1.1.24",
     "com.unity.textmeshpro": "3.0.4",
     "com.unity.timeline": "1.6.0-pre.3",
+    "com.unity.toolchain.win-x86_64-linux-x86_64": "0.1.20-preview",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.6.1",
     "com.unity.modules.ai": "1.0.0",
@@ -46,9 +49,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.github.superunitybuild.buildtool": "2.0.0",
-    "com.github.superunitybuild.buildactions": "2.0.0"
+    "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
     {
