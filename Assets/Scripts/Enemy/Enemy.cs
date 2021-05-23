@@ -12,9 +12,11 @@ public class Enemy : MonoBehaviour
 {
     [Tooltip("The current state of the enemy")]
     public EnemyState currentState;
+    [Tooltip("The max health of the enemy")]
+    public FloatValue maxHealth;
 
     [Tooltip("The health of the enemy")]
-    public int health;
+    public float health;
 
     [Tooltip("The name of the enemy")]
     public string enemyName;
@@ -25,9 +27,24 @@ public class Enemy : MonoBehaviour
     [Tooltip("The move speed of the enemy")]
     public float moveSpeed;
 
-    public void Knock(Rigidbody2D rigidbody, float knockTime)
+    void Awake()
+    {
+        health = maxHealth.initialValue;
+    }
+
+    private void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    public void Knock(Rigidbody2D rigidbody, float knockTime, float damage)
     {
         StartCoroutine(KnockCoroutine(rigidbody, knockTime));
+        TakeDamage(damage);
     }
 
     private IEnumerator KnockCoroutine(Rigidbody2D rigidbody, float knockTime)
