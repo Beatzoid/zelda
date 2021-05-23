@@ -1,7 +1,17 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class FloatValue : ScriptableObject
+public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
 {
-    public float initialValue;
+    public float initalValue;
+
+    public float runtimeValue;
+
+    public void OnAfterDeserialize()
+    {
+        runtimeValue = initalValue;
+    }
+
+    public void OnBeforeSerialize() { }
 }

@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Tooltip("Current player state")]
     public PlayerState currentState;
+    public PlayerStats playerStats;
+    public SignalSender playerHealthSignal;
 
     private Rigidbody2D playerRigidbody;
     private Vector3 change;
@@ -81,9 +83,19 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody.MovePosition(transform.position + change.normalized * speed * Time.deltaTime);
     }
 
-    public void Knock(float knockTime)
+    public void Knock(float knockTime, float damage)
     {
-        StartCoroutine(KnockCoroutine(knockTime));
+        playerStats.runtimeHealth -= damage;
+        playerHealthSignal.Raise();
+        if (playerStats.runtimeHealth > 0)
+        {
+            StartCoroutine(KnockCoroutine(knockTime));
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+            playerStats.OnAfterDeserialize();
+        }
     }
 
     private IEnumerator KnockCoroutine(float knockTime)
@@ -95,5 +107,10 @@ public class PlayerMovement : MonoBehaviour
             currentState = PlayerState.idle;
             playerRigidbody.velocity = Vector2.zero;
         }
+    }
+
+    public void OnApplicationQuit()
+    {
+        playerStats.OnAfterDeserialize();
     }
 }

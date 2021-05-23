@@ -12,8 +12,8 @@ public class Enemy : MonoBehaviour
 {
     [Tooltip("The current state of the enemy")]
     public EnemyState currentState;
-    [Tooltip("The max health of the enemy")]
-    public FloatValue maxHealth;
+    [Tooltip("The stats of the enemy")]
+    public EnemyStats enemyStats;
 
     [Tooltip("The health of the enemy")]
     public float health;
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        health = maxHealth.initialValue;
+        health = enemyStats.health;
     }
 
     private void TakeDamage(float damage)
@@ -43,8 +43,9 @@ public class Enemy : MonoBehaviour
 
     public void Knock(Rigidbody2D rigidbody, float knockTime, float damage)
     {
-        StartCoroutine(KnockCoroutine(rigidbody, knockTime));
         TakeDamage(damage);
+        if (this.gameObject.activeInHierarchy)
+            StartCoroutine(KnockCoroutine(rigidbody, knockTime));
     }
 
     private IEnumerator KnockCoroutine(Rigidbody2D rigidbody, float knockTime)
