@@ -14,10 +14,15 @@ public class Log : Enemy
     [Tooltip("The place to return to when out of range of the target")]
     public Transform homePosition;
 
+    private Animator anim;
+    private Rigidbody2D logRigidbody;
+
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
         currentState = EnemyState.idle;
+        anim = GetComponent<Animator>();
+        logRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -27,16 +32,31 @@ public class Log : Enemy
 
     void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius
-            && Vector3.Distance(target.position, transform.position) > attackRadius)
+        float distance = Vector3.Distance(target.position, transform.position);
+        if (distance <= chaseRadius && distance > attackRadius)
         {
             if (currentState == EnemyState.idle || currentState == EnemyState.walk
                 && currentState != EnemyState.stagger)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                changeAnim(temp - transform.position);
+                logRigidbody.MovePosition(temp);
+
                 ChangeState(EnemyState.walk);
+                anim.SetBool("wakeUp", true);
             }
         }
+        else if (distance > chaseRadius)
+        {
+            anim.SetBool("wakeUp", false);
+        }
+    }
+
+    private void changeAnim(Vector2 direction)
+    {
+        direction = direction.normalized;
+        anim.SetFloat("moveX", direction.x);
+        anim.SetFloat("moveY", direction.y);
     }
 
     private void ChangeState(EnemyState newState)

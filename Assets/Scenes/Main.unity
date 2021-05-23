@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ae502efcc2984e87db96389c1b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  thrust: 2.5
   knockTime: 0.3
 --- !u!1 &79922064
 GameObject:
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ae502efcc2984e87db96389c1b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  thrust: 2.5
   knockTime: 0.3
 --- !u!1 &327995366
 GameObject:
@@ -6536,7 +6536,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335576157}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -6634,7 +6634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ae502efcc2984e87db96389c1b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 0.5
+  thrust: 2
   knockTime: 0.3
 --- !u!1 &519420028
 GameObject:
@@ -6817,7 +6817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ae502efcc2984e87db96389c1b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  thrust: 2.5
   knockTime: 0.3
 --- !u!1 &615772525
 GameObject:
@@ -11422,7 +11422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ae502efcc2984e87db96389c1b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  thrust: 2.5
   knockTime: 0.3
 --- !u!1 &1551837961
 GameObject:
