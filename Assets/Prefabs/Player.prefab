@@ -182,6 +182,7 @@ MonoBehaviour:
   currentState: 0
   playerStats: {fileID: 11400000, guid: db17321ecbcae334cb9d9e269331c16e, type: 2}
   playerHealthSignal: {fileID: 11400000, guid: 6e1436a8b9fe88e439395dd7f1412b8b, type: 2}
+  startingPosition: {fileID: 11400000, guid: 1699d5eb6507e54408ca96a09f0dad08, type: 2}
 --- !u!95 &7611198185710317937
 Animator:
   serializedVersion: 3

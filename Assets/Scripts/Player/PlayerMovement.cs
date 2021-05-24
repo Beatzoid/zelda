@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerState currentState;
     public PlayerStats playerStats;
     public SignalSender playerHealthSignal;
+    public VectorValue startingPosition;
 
     private Rigidbody2D playerRigidbody;
     private Vector3 change;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetFloat("moveX", 0);
         anim.SetFloat("moveY", -1);
+        transform.position = startingPosition.initialValue;
     }
 
     void FixedUpdate()
