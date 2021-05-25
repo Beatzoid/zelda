@@ -6119,9 +6119,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2118352616, guid: 0754aa9e9bae8114bb6728d5a2b54afd, type: 3}
+      propertyPath: fadeInPanel
+      value: 
+      objectReference: {fileID: 2008869829628944491, guid: cb60cea86a000b4469a61143c217b142, type: 3}
+    - target: {fileID: 2118352616, guid: 0754aa9e9bae8114bb6728d5a2b54afd, type: 3}
       propertyPath: sceneToLoad
       value: Overworld
       objectReference: {fileID: 0}
+    - target: {fileID: 2118352616, guid: 0754aa9e9bae8114bb6728d5a2b54afd, type: 3}
+      propertyPath: fadeOutPanel
+      value: 
+      objectReference: {fileID: 1122712120815232711, guid: 7d64823af6f77c241b40afdb435aa848, type: 3}
     - target: {fileID: 2118352616, guid: 0754aa9e9bae8114bb6728d5a2b54afd, type: 3}
       propertyPath: playerStorage
       value: 

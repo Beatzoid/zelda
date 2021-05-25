@@ -96,7 +96,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             this.gameObject.SetActive(false);
-            playerStats.OnAfterDeserialize();
         }
     }
 
@@ -109,10 +108,5 @@ public class PlayerMovement : MonoBehaviour
             currentState = PlayerState.idle;
             playerRigidbody.velocity = Vector2.zero;
         }
-    }
-
-    public void OnApplicationQuit()
-    {
-        playerStats.OnAfterDeserialize();
     }
 }

@@ -7,10 +7,10 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
 
     public float runtimeHealth;
 
-    public void OnAfterDeserialize()
+    void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
         runtimeHealth = health;
     }
 
-    public void OnBeforeSerialize() { }
+    void ISerializationCallbackReceiver.OnBeforeSerialize() { }
 }
